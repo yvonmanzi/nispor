@@ -265,6 +265,7 @@ pub(crate) fn get_routes(
     for iface in ifaces.values() {
         ifindex_to_name.insert(format!("{}", iface.index), iface.name.clone());
     }
+    // TODO: Can't we just use the macro of running main as async. and then use await instead of Runtime::blocking?
     Ok(Runtime::new()?.block_on(_get_routes(&ifindex_to_name))?)
 }
 
